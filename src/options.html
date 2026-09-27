@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Fish Korean TTS</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <main>
+    <h1>Fish Korean TTS</h1>
+    <p class="lede">Select Korean text on any page, then click the blue speaker icon. Generated audio is cached here and reused the next time you select the same text with the same voice settings.</p>
+
+    <section>
+      <h2>Settings</h2>
+      <form id="settings">
+        <label>
+          <span>Fish Audio API key</span>
+          <input id="apiKey" type="password" autocomplete="off" spellcheck="false" placeholder="Paste your API key" />
+          <small>Create one at <a href="https://fish.audio/app/api-keys/" target="_blank" rel="noreferrer">fish.audio → API keys</a>. Stored only in this browser.</small>
+        </label>
+        <label>
+          <span>Voice ID (reference_id)</span>
+          <input id="voiceId" type="text" spellcheck="false" placeholder="Leave empty for the default voice" />
+          <small>Pick a Korean voice in the <a href="https://fish.audio/discovery/" target="_blank" rel="noreferrer">voice library</a> and copy the ID from its URL.</small>
+        </label>
+        <div class="row">
+          <label>
+            <span>Model</span>
+            <select id="model"></select>
+          </label>
+          <label>
+            <span>Speed <output id="speedOut"></output></span>
+            <input id="speed" type="range" min="0.5" max="2" step="0.05" />
+          </label>
+        </div>
+        <div class="actions">
+          <button type="submit">Save</button>
+          <span id="saved" class="status" hidden>Saved</span>
+        </div>
+      </form>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Cached audio</h2>
+        <span id="cacheStats" class="muted"></span>
+        <button id="clearAll" class="danger" type="button">Clear all</button>
+      </div>
+      <input id="filter" type="search" placeholder="Filter cached text…" />
+      <ul id="clips"></ul>
+      <p id="empty" class="muted" hidden>No cached audio yet.</p>
+    </section>
+  </main>
+  <script type="module" src="options.js"></script>
+</body>
+</html>
